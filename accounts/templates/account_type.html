@@ -1,0 +1,33 @@
+{% extends 'base.html'%} 
+
+{% block content %}
+
+{{ block.super}}
+
+<form method='POST'>
+    {% csrf_token %}
+    {{form.as_p}}
+<input type='submit' value='submit'>
+</form>
+{{cleaned_data}}
+<table border=1> 
+    <thead>
+        <tr>
+            <th>النوع</th>
+            <th>الوصف</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for type in data %}
+        <tr>
+            <td>
+                {{type.name}}
+            </td>
+            <td>
+                {{type.descriptiom}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock content %}

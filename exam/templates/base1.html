@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block header %}
+    
+    {% endblock header %}
+
+    {% block cssfiles %}
+    
+    {% endblock cssfiles %}
+</head>
+<body>
+    {% block content %}
+                {% comment %} {{ transaction }}
+
+                {% if currency %}
+                
+                    {% for cu in currency %}
+                        {{cu.name}}
+                    {% endfor %}
+
+                {% endif %} {% endcomment %}
+                <h1>Empolyee</h1>
+                    <table> 
+                        <thead>
+                            <tr>
+                                {% comment %} <th>الاسم</th>
+                                <th>المدين</th>
+                                <th>الدائن</th> {% endcomment %}
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    {% comment %} <li> 
+                    
+                    </li> {% endcomment %}
+  
+  
+    {% endblock content %}
+
+    {% block footer %}
+    {% endblock footer %}
+
+    {% block jsscripts %}
+    {% endblock jsscripts %}
+
+    
+</body>
+</html> 

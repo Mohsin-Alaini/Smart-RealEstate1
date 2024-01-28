@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {% block header %}
+    
+    {% endblock header %}
+
+    {% block cssfiles %}
+    
+    {% endblock cssfiles %}
+</head>
+<body>
+    {% block content %}
+                {% comment %} {{ transaction }}
+
+                {% if currency %}
+                
+                    {% for cu in currency %}
+                        {{cu.name}}
+                    {% endfor %}
+
+                {% endif %} {% endcomment %}
+                <h1>Accounts</h1>
+                    <table> 
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>المدين</th>
+                                <th>الدائن</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    {% comment %} <li> 
+                    
+                    </li> {% endcomment %}
+  
+  
+    {% endblock content %}
+
+    {% block footer %}
+    {% endblock footer %}
+
+    {% block jsscripts %}
+    {% endblock jsscripts %}
+
+    
+</body>
+</html> 
+
+
+
+
+{% comment %} <!DOCTYPE html>
+<html>
+<head>
+ 
+</head>
+<body>
+                {{ transaction }}
+
+                {% if currency %}
+                
+                    {% for cu in currency %}
+                        {{cu.name}}
+                    {% endfor %}
+
+                {% endif %}
+                <h1>Accounts</h1>
+                    <table> 
+                        <thead>
+                            <tr>
+                                <th>الاسم</th>
+                                <th>المدين</th>
+                                <th>الدائن</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            
+                        </tbody>
+                    </table>
+                    <li> 
+                    
+                    </li>
+  
+  
+   
+    
+</body>
+</html> {% endcomment %}
