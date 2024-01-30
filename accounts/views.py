@@ -4,6 +4,7 @@ from .models import Currency ,ExchangeRate ,Account,AccountType,TransactionDetai
 from .forms import StudentForm , CurrencyForm ,AccountTypeForm
 from django.db.models import Q , Min, Max, Avg, Sum , F
 from django.views import View
+from django.urls import reverse
 
 # Create your views here.
 
@@ -122,15 +123,26 @@ def view4(request,path):
 class AccountTypeView(View):
     def get(self, request, *args , **kwargs):
         account_types = AccountType.objects.all()
-        form = AccountTypeForm()
+        if 'id' in request.GET.keys():
+            account_type = AccountType.objects.get(id=request.GET.get('id'))
+            form = AccountTypeForm(instance=account_type)
+        else:
+            form = AccountTypeForm()
         context = {
             'form' : form,
-            'data' : account_types        }
+            'data' : account_types,
+            'url' : reverse('account_type'),
+            'id' : request.GET.get('id')    
+            }
         return render(request,'account_type.html',context)
     
     def post(self, request, *args , **kwargs):
         account_types = AccountType.objects.all()
-        form = AccountTypeForm(request.POST)
+        if 'id' in request.POST.keys():
+            account_type = AccountType.objects.get(id=request.POST.get('id'))
+            form = AccountTypeForm(request.POST, instance=account_type)
+        else:
+            form = AccountTypeForm(request.POST)
         if form.is_valid():
             cleaned_data = form.cleaned_data
             print(type(form),'form_type')
@@ -143,6 +155,7 @@ class AccountTypeView(View):
         context = {
             'form' : form,
             'data' : account_types,
+            'url' : reverse('account_type')
             #'cleaned_data' : cleaned_data
 
         }
