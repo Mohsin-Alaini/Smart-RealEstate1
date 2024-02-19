@@ -149,7 +149,7 @@ class AccountTypeView(View):
             obj = form.save()
             #obj.name = 
             #form.save()
-            print(type(obj),'form_type2')
+            print(type(obj),'form_type2') 
             
     
         context = {
